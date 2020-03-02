@@ -47,14 +47,16 @@ def move():
     print("MOVE:", json.dumps(data))
     directions = ["up", "down", "left", "right"]
 
-    if data.board.height == data.you.body.x or data.board.height == 0 :
-        move = random.choice("left", "right")
-        return
-    elif data.board.width = data.you.body.y
-        move = random.choice("up", "down")
-        return move
-# Choose a random direction to move in if not avoiding wall
-    else:
+#     if data.board.height == data.you.body.x or data.board.height == 0 :
+#         move = random.choice("left", "right")
+#         return
+#     elif data.board.width = data.you.body.y
+#         move = random.choice("up", "down")
+#         return move
+# # Choose a random direction to move in if not avoiding wall
+#     else:
+
+
         move = random.choice(directions)
 
     
