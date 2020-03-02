@@ -70,6 +70,7 @@ def move():
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
    
+    print(f'move is: {move}')
 
     response = {
         "move": move,
