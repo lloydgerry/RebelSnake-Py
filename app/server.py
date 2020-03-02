@@ -89,7 +89,10 @@ def move():
     right_of_board = board_width - 1 == your_y
     left_of_board = board_width == 0
 
-    if top_of_board and last_move == 'up':
+    print(f'top_of_board is: {top_of_board}')
+    print(f'last_move == "up" is: {last_move == "up"}')
+    
+    if top_of_board and last_move == "up":
         move = random.choice("left", "right")
     elif bottom_of_board and last_move == 'down':
         move = random.choice("left", "right")
