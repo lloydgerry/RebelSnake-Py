@@ -35,6 +35,7 @@ def start():
         body=json.dumps(response),
     )
 
+last_move = None
 
 @bottle.post("/move")
 def move():
@@ -46,7 +47,7 @@ def move():
     data = bottle.request.json
     print("MOVE:", json.dumps(data))
     directions = ["up", "down", "left", "right"]
-    move = random.choice(directions)
+    move = None
     shout = "I am a python snake, hear me slither!"
     
     if not data:
@@ -59,23 +60,37 @@ def move():
     your_y = my_body[0]["y"]
     print(board_width)
 
-    if board_height == your_x or board_height == 0 :
+    top_of_board = board_height - 1 == your_y
+    bottom_of_board = board_height == 0
+    right_of_board = board_width - 1 == your_y
+    left_of_board = board_width == 0
+
+    if top_of_board and last_move == 'up':
         move = random.choice("left", "right")
-    elif board_width == your_y or board_width == 0:
+    elif bottom_of_board and last_move == 'down':
+        move = random.choice("left", "right")
+    elif right_of_board and last_move == 'right':
         move = random.choice("up", "down")
-    else:
+    elif left_of_board and last_move == 'left':
+        move = random.choice("up", "down")
+    #else:
         # Choose a random direction to move in if not avoiding wall
-        move = random.choice(directions)
+        #move = random.choice(directions)
 
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
    
     print(f'move is: {move}')
 
+    if not move:
+        move = last_move
+
     response = {
         "move": move,
-        "shout": shout
+        #"shout": shout,
     }
+    last_move = response["move"]
+
     return HTTPResponse(
         status=200,
         headers={"Content-Type": "application/json"},
