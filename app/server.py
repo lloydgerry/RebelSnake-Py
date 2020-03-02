@@ -45,11 +45,12 @@ def move():
     """
     data = bottle.request.json
     print("MOVE:", json.dumps(data))
-    data = json.dumps(data)
     directions = ["up", "down", "left", "right"]
     move = random.choice(directions)
     shout = "I am a python snake, hear me slither!"
     
+    if not data:
+        return "data is null"
     # Avoid wall
     board_width = data["board"]["width"]
     board_height = data["board"]["height"]
