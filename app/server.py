@@ -54,8 +54,9 @@ def move():
     # Avoid wall
     board_width = data["board"]["width"]
     board_height = data["board"]["height"]
-    your_x = data["you"]["body"]["x"]
-    your_y = data["you"]["body"]["y"]
+    my_body = data["you"]["body"]
+    your_x = my_body[0]["x"]
+    your_y = my_body[0]["y"]
     print(board_width)
 
     if board_height == your_x or board_height == 0 :
