@@ -54,11 +54,13 @@ def move():
     # Avoid wall
     board_width = data["board"]["width"]
     board_height = data["board"]["height"]
+    your_x = data["you"]["body"]["x"]
+    your_y = data["you"]["body"]["y"]
     print(board_width)
 
-    if board_height == data.you.body.x or board_height == 0 :
+    if board_height == your_x or board_height == 0 :
         move = random.choice("left", "right")
-    elif board_width == data.you.body.y or board_width == 0:
+    elif board_width == your_y or board_width == 0:
         move = random.choice("up", "down")
     else:
         # Choose a random direction to move in if not avoiding wall
