@@ -28,7 +28,7 @@ def start():
     data = bottle.request.json
     print("START:", json.dumps(data))
 
-    response = {"color": "#00FF00", "headType": "bendr", "tailType": "hook"}
+    response = {"color": "#002366", "headType": "bendr", "tailType": "hook"}
     return HTTPResponse(
         status=200,
         headers={"Content-Type": "application/json"},
@@ -45,10 +45,20 @@ def move():
     """
     data = bottle.request.json
     print("MOVE:", json.dumps(data))
-
-    # Choose a random direction to move in
     directions = ["up", "down", "left", "right"]
-    move = random.choice(directions)
+
+    def wallavoid(data):
+        if data.board.height == data.you.body.x or data.board.height == 0 :
+            move = random.choice("left", "right")
+            return move
+        elif data.board.width = data.you.body.y
+            move = random.choice("up", "down")
+            return move
+    # Choose a random direction to move in if not avoiding wall
+        else:
+            move = random.choice(directions)
+
+    
 
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
