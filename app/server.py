@@ -46,6 +46,8 @@ def move():
     data = bottle.request.json
     print("MOVE:", json.dumps(data))
     directions = ["up", "down", "left", "right"]
+    move = random.choice(directions)
+    shout = "I am a python snake, hear me slither!"
 
 #     if data.board.height == data.you.body.x or data.board.height == 0 :
 #         move = random.choice("left", "right")
@@ -56,14 +58,9 @@ def move():
 # # Choose a random direction to move in if not avoiding wall
 #     else:
 
-
-        move = random.choice(directions)
-
-    
-
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
-    shout = "I am a python snake, hear me slither!"
+   
 
     response = {"move": move, "shout": shout}
     return HTTPResponse(
