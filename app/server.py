@@ -35,8 +35,6 @@ def start():
         body=json.dumps(response),
     )
 
-last_move = None
-
 @bottle.post("/move")
 def move():
     """
@@ -56,9 +54,34 @@ def move():
     board_width = data["board"]["width"]
     board_height = data["board"]["height"]
     my_body = data["you"]["body"]
-    your_x = my_body[0]["x"]
-    your_y = my_body[0]["y"]
+    head = my_body[0]
+    head_prev = my_body[1]
+    your_x = head["x"]
+    your_y = head["y"]
     print(board_width)
+
+    last_move = (head["x"] - head_prev["x"]) + 2*(head["y"] - head_prev["y"])
+    # -1 = left
+    # 1 = right
+   # -2 = up
+    # 2 = down
+    # 0 = start
+    if (last_move == -1):
+        last_move = 'left'
+    if (last_move == 1):
+        last_move = 'right'
+    if (last_move == -2):
+        last_move = 'up'
+    if (last_move == 2):
+        last_move = 'down'
+    if (last_move == 0):
+        last_move = 'start'
+
+    start_of_game = last_move == 'start'
+
+    if (start_of_game):
+        # TODO: need to fix when we start next to a wall
+        random.choice(directions)
 
     top_of_board = board_height - 1 == your_y
     bottom_of_board = board_height == 0
