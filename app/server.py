@@ -95,13 +95,13 @@ def move():
     print(f'your_y is: {your_y}')
     
     if top_of_board and last_move == "up":
-        move = random.choice("left", "right")
+        move = random.choice(["left", "right"])
     elif bottom_of_board and last_move == 'down':
-        move = random.choice("left", "right")
+        move = random.choice(["left", "right"])
     elif right_of_board and last_move == 'right':
-        move = random.choice("up", "down")
+        move = random.choice(["up", "down"])
     elif left_of_board and last_move == 'left':
-        move = random.choice("up", "down")
+        move = random.choice(["up", "down"])
     #else:
         # Choose a random direction to move in if not avoiding wall
         #move = random.choice(directions)
