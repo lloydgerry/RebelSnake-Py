@@ -58,25 +58,26 @@ def move():
     head_prev = my_body[1]
     your_x = head["x"]
     your_y = head["y"]
-    print(board_width)
+    print(f'board width is: {board_width}')
 
-    last_move = (head["x"] - head_prev["x"]) + 2*(head["y"] - head_prev["y"])
+    last_move_coordinate = (head["x"] - head_prev["x"]) + 2*(head["y"] - head_prev["y"])
     # -1 = left
     # 1 = right
    # -2 = up
     # 2 = down
     # 0 = start
-    if (last_move == -1):
+    if (last_move_coordinate == -1):
         last_move = 'left'
-    if (last_move == 1):
+    elif (last_move_coordinate == 1):
         last_move = 'right'
-    if (last_move == -2):
+    elif (last_move_coordinate == -2):
         last_move = 'up'
-    if (last_move == 2):
+    elif (last_move_coordinate == 2):
         last_move = 'down'
-    if (last_move == 0):
+    elif (last_move_coordinate == 0):
         last_move = 'start'
 
+    print(f'last move is: {last_move}')
     start_of_game = last_move == 'start'
 
     if (start_of_game):
