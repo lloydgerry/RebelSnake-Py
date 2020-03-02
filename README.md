@@ -1,4 +1,4 @@
-# starter-snake-python
+# RebelSnake
 
 A simple [Battlesnake](http://play.battlesnake.com) written in Python.
 
