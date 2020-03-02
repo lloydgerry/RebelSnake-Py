@@ -49,14 +49,15 @@ def move():
     move = random.choice(directions)
     shout = "I am a python snake, hear me slither!"
 
-#     if data.board.height == data.you.body.x or data.board.height == 0 :
-#         move = random.choice("left", "right")
-#         return
-#     elif data.board.width = data.you.body.y
-#         move = random.choice("up", "down")
-#         return move
-# # Choose a random direction to move in if not avoiding wall
-#     else:
+    if data.board.height == data.you.body.x or data.board.height == 0 :
+        move = random.choice("left", "right")
+        return
+    elif data.board.width == data.you.body.y or data.board.width == 0:
+        move = random.choice("up", "down")
+        return move
+# Choose a random direction to move in if not avoiding wall
+    else:
+        move = random.choice(directions)
 
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
