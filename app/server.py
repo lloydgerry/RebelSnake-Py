@@ -94,14 +94,26 @@ def move():
     print(f'board_height is: {board_height}')
     print(f'your_y is: {your_y}')
     
-    if top_of_board and last_move == "up":
-        move = random.choice(["left", "right"])
-    elif bottom_of_board and last_move == 'down':
-        move = random.choice(["left", "right"])
-    elif right_of_board and last_move == 'right':
-        move = random.choice(["up", "down"])
-    elif left_of_board and last_move == 'left':
-        move = random.choice(["up", "down"])
+
+    # Remove invalid direction based on our last move
+    if last_move == "up":
+        directions.remove("down")
+    if last_move == "left":
+        directions.remove("right")
+    if last_move == "right":
+        directions.remove("left")
+    if last_move == "down":
+        directions.remove("up")
+
+    # Remove invalid direction based on if at edge of map
+    if top_of_board:
+        directions.remove("up")
+    if bottom_of_board:
+        directions.remove("down")
+    if right_of_board:
+        directions.remove("right")
+    if left_of_board:
+        directions.remove("left")
     #else:
         # Choose a random direction to move in if not avoiding wall
         #move = random.choice(directions)
@@ -109,6 +121,8 @@ def move():
     # Shouts are messages sent to all the other snakes in the game.
     # Shouts are not displayed on the game board.
    
+    move = random.choice(directions)
+    
     print(f'move is: {move}')
 
     if not move:
