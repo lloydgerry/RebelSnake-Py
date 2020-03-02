@@ -84,10 +84,10 @@ def move():
         # TODO: need to fix when we start next to a wall
         random.choice(directions)
 
-    top_of_board = board_height - 1 == your_y
-    bottom_of_board = board_height == 0
-    right_of_board = board_width - 1 == your_y
+    top_of_board = board_height == 0
+    bottom_of_board = board_height - 1 == your_y
     left_of_board = board_width == 0
+    right_of_board = board_width - 1 == your_y
 
     print(f'top_of_board is: {top_of_board}')
     print(f'last_move == "up" is: {last_move == "up"}')
